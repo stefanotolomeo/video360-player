@@ -1,0 +1,45 @@
+{
+    "type" : "video-360",
+    "src" : "market.mp4",
+    "available_audio" : [
+        {
+            "id": "1",
+            "name": "Persone che parlano",
+            "src": "people_talking.mp3"
+        },
+        {
+            "id": "2",
+            "name": "Cassiera Interfono",
+            "src": "cassiera_interfono.mp3"
+        }, 
+        {
+            "id": "3",
+            "name": "Bimbo che piange",
+            "src": "child_crying.mp3"
+        },
+        {
+            "id": "4",
+            "name": "Carrello stridente",
+            "src": "carrello_stridente.mp3"
+        }, 
+    ],
+    "parameters": [
+        {
+            "id": "1",
+            "title": "Rotate view",
+            "description": "Rotate the view to the provided input (X, Y, Z)",
+            "type": "text",
+            "default": "0 0 0",
+            "scope": "all",
+            "stage": ["before", "during", "after"]
+        },
+        {
+            "id": "2",
+            "title": "Sound",
+            "description": "Apply the sound",
+            "type": "custom",
+            "default": "none",
+            "stage": ["before", "during"]
+        }
+    ]
+}

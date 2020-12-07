@@ -1,0 +1,44 @@
+{
+    "type" : "video-360",
+    "src" : "market.mp4",
+    "init_settings" : {
+        "rotation" : {
+                "x": "0",
+                "y": "-90",
+                "z": "0"
+            },
+        "sounds" : [
+            {
+                "id" : "talking",
+                "src": "aa",
+                "loop" : "true"
+            }
+        ]
+    },
+    "elements" : [
+        {
+            "id" : "1234",
+            "ts_start_in_sec" : "2",
+            "ts_duration_in_sec" : "3",
+            "type": "box",
+            "color" : "red",
+            "position" : {
+                "x": "0",
+                "y": "0",
+                "z": "-5"
+            },
+            "rotation" : {
+                "x": "0",
+                "y": "0",
+                "z": "0"
+            },
+            "ecat": {
+                "event": "guarda",
+                "condition" : "what/how much",
+                "action": "",
+                "transiction": ""
+            }
+        }
+    ]
+    
+}

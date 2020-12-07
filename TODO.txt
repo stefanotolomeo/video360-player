@@ -1,0 +1,25 @@
+**** Architettura ****
+1) Comunicazione tra Computer (server) e Smartphone (client) avviene via WebSocket
+2) Sullo smartphone è in esecuzione l'applicazione client (HTML)
+3) Applicazione Client: riceve un JSON ad inizializzatione e N JSON durante l'esecuzione:
+3.1) Inizializzazione: 
+	a) JSON contiene il sorgente del contenuto (e.g. video 360, contenuto 3D);
+	b) JSON contiene i parametri di tutta la scena (e.g. timestamp: parametri);
+3.2) Runtime:
+	a) JSON contiene degli override dei parametri precedentemente settati;
+	b) JSON contiene dei nuovi parametri (sempre nella forma: timestamp: parametri);
+
+4) Usare <a-videosphere>
+TODO:
+1) Definire il JSON di comunicazione
+2) Definire i componenti che si possono aggiungere: devono essere il più generici possibili in modo da essere riusabili
+3) Alcuni sono custom del contenuto erogato
+4) Controlloare se qualche component A-Frame già sviluppato e disponibile nella community può essere usato
+
+
+-----
+1) Inizializzazione: dentro a init()
+2) Update: dentro ad update()
+3) Gaze-Base Interaction
+4) Quale Gamepad usiamo? 
+

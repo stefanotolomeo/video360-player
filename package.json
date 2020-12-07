@@ -1,0 +1,32 @@
+{
+    "name": "player-360",
+    "version": "1.0.0",
+    "description": "Player for activities Video 360",
+    "author": [
+        {
+            "name": "Mirko Gelsomini",
+            "email": "mirko.gelsomini@gmail.com",
+            "url": "https://aa.com"
+        },
+        {
+            "name": "Stefano Tolomeo",
+            "email": "ste.tolomeo@gmail.com",
+            "url": "https://bb.com"
+        }
+    ],
+    "main": "src/index.html",
+    "private": true,
+    "scripts": {},
+    "dependencies": {
+        "aframe": "^1.1.0",
+        "aframe-bmfont-text-component": "^0.1.4"
+    },
+    "devDependencies": {},
+    "engines": {},
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ],
+    "type": "module"
+}

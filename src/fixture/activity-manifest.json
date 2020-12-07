@@ -1,0 +1,99 @@
+{
+    "type" : "video-360",
+    "src" : "market.mp4",
+    "init" : {
+        // cosa applico all'attività di default (in funzione del contenuto video)
+        "rotation" : {
+                "x": "0",
+                "y": "-90",
+                "z": "0"
+            }
+    },
+    "ecat-logic" : [
+        // Ciò che accade nel video: settaggi utente + logica intrinseca dell'attività
+        // Serve una lista di ecat triggerate da event: event può essere time-dependent, controller-dependent (terapista) o user-dependent (bambino)
+        {
+            "id" : "1234",
+            
+            "type": "T-D",
+            
+            "event" : "time",
+            "condition" : "time_sec == 2",
+            "action" : {
+                "ts_duration_in_sec" : "3",
+                "type": "box",
+                "color" : "red",
+                "obj_id" : "red-box",
+                "position" : {
+                    "x": "0",
+                    "y": "0",
+                    "z": "-5"
+                },
+                "rotation" : {
+                    "x": "0",
+                    "y": "0",
+                    "z": "0"
+                }   
+            }
+        },
+        {
+            "id" : "333",
+            "type": "C-D",
+            
+            "event": "button clicked",
+            "condition" : "id == 2",
+            "action": " set time to scaffale pasta",
+            "transaction": "N/A"
+        },
+        {
+            "id" : "444",
+            "type": "U-D",
+            
+            "event": "user focus",
+            "condition": "time_duration == 3 && objectId == 'red-box'",
+            "action": "show text 'Bravo' && reward sound",
+            "action": "setAudio(12) && reward sound",
+            "action": {
+                "type": "text",
+                "content": "bravo",
+                "position": ""
+            },
+        }
+    ],
+    
+    
+    "available_audio" : [
+        {
+            "id": "1",
+            "name": "Persone che parlano",
+            "src": "people_talking.mp3"
+        },
+        {
+            "id": "2",
+            "name": "Cassiera Interfono",
+            "src": "cassiera_interfono.mp3"
+        }, 
+        {
+            "id": "3",
+            "name": "Bimbo che piange",
+            "src": "child_crying.mp3"
+        },
+        {
+            "id": "4",
+            "name": "Carrello stridente",
+            "src": "carrello_stridente.mp3"
+        }, 
+    ],
+    "settings": [
+        // Settaggi lato utente in tempo reale: 
+        {
+           "id": "2",
+           "titolo": "Vai a scaffale pasta",
+           "description": "Vai a scaffale pasta",
+           "type": "button",
+           "text": "Vai",
+           "stage": ["during"]
+        },
+    ]
+    
+}
