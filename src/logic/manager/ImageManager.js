@@ -1,4 +1,4 @@
-const VIDEO_BASE_PATH = "./assets/image/"
+const IMAGE_BASE_PATH = "./assets/image/"
 
 function editImage(id, position, rotation){
     console.log(`Updating Image with Id=${id}`)

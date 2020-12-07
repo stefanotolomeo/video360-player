@@ -39,4 +39,4 @@ function readJson(document){
     }
 }
 
-// $(document).ready(readJson);
+$(document).ready(readJson);
