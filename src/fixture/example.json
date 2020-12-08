@@ -17,11 +17,34 @@
     },
     "elements" : [
         {
-            "id" : "1234",
+            "id" : "111",
             "ts_start_in_sec" : "2",
             "ts_duration_in_sec" : "3",
             "type": "box",
             "color" : "red",
+            "position" : {
+                "x": "2",
+                "y": "2",
+                "z": "-5"
+            },
+            "rotation" : {
+                "x": "0",
+                "y": "0",
+                "z": "0"
+            },
+            "ecat": {
+                "event": "guarda",
+                "condition" : "what/how much",
+                "action": "",
+                "transiction": ""
+            }
+        },
+        {
+            "id" : "222",
+            "ts_start_in_sec" : "2",
+            "ts_duration_in_sec" : "3",
+            "type": "sphere",
+            "color" : "blue",
             "position" : {
                 "x": "0",
                 "y": "0",

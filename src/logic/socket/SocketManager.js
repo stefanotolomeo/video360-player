@@ -1,6 +1,10 @@
 // TODO: understand how to implement
 
+const MSG_DESTINATION = "CP";
+
 sm.init(onauthenticate, ondisconnect); //Callback for authentication and for disconnection. No need to try to reconnect.
+
+sm.listen(onmessage); //Callback for message reception
 
 function onauthenticate() {
     console.log("Authenticated"); //the client was authenticated by the server. The client can now send messages.
@@ -11,12 +15,12 @@ function ondisconnect(reason) {
 }
 
 
-
-sm.listen(onmessage); //Callback for message reception
-
 function onmessage(msg) {
     console.log("Message received", msg); //a message was received, you can access action, destination, sender and payload properties
+    
+    let result = executeMessage(msg)
+
+    console.log(`Sending result: ${result}`)
+    
+    sm.send(msg.action, MSG_DESTINATION, result);
 }
-
-
-sm.send("action","destination","payload");

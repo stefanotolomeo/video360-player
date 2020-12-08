@@ -1,28 +1,56 @@
+const DEFAULT_ROTATION = "0 0 0"
 
-// TODO: fare lista degli id presenti
-
-function editText(id, text, position, rotation){
-    console.log(`Updating Text with Id=${id}`)
+function editText(id, text, color, height, width, position, rotation){
     
-    // TODO
+    try {
+        console.log(`Editing Text with Id=${id}`)
+    
+        $(`#${id}`).attr({
+          value: text,
+          color: color,
+          height: height,
+          width: width,
+          position: position,
+          rotation: rotation,
+        })
+        
+        return true
+        
+    } catch(e){
+        console.log(`Exception on editText: ${e}`)
+        return false
+    }
 }
 
 
 function deleteText(id){
-    console.log(`Deleting Text with Id=${id}`)
+    try {
+        console.log(`Deleting Text with Id=${id}`)
     
-    // TODO
+        $(`#${id}`).remove()
+        
+        return true
+        
+    } catch(e){
+        console.log(`Exception on deleteText: ${e}`)
+        return false
+    }
+    
 }
 
+function addText(id, text, color, height, width, position, rotation){
+    try {
+        console.log("Setting Text into scene..")
 
-function addText(id, text, position, rotation){
-    console.log("Setting Text into scene: ")
-    // Add <a-entity bmfont-text="text: Hello world"></a-entity>
-    // textObj.text = text
-    
-    var item = `<a-text id="${id}" value="${text}" color="red" position="0 0 -2"></a-text>`
-    
-    console.log(`Appending Text Element: ${item}`)
-    
-    $("#scene").append(item)
+        let item = `<a-text id="${id}" value="${text}" color="${color}" height="${height}" width="${width}" position="${position}" rotation="${rotation}"></a-text>`
+
+        console.log(`Appending Text Element: ${item}`)
+
+        $("#scene").append(item)
+
+        return true
+    } catch(e){
+        console.log(`Exception on addText: ${e}`)
+        return false
+    }
 }
