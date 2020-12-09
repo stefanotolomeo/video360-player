@@ -3,7 +3,7 @@ function getView(){
     try {
         console.log("Getting view..")
         var camera = $("#camera")
-        let view
+        let view = {}
         view.pos = camera.attr("position")
         view.rot = camera.attr("rotation")
 

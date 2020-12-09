@@ -2,7 +2,8 @@
 const AUDIO_BASE_PATH = "./assets/audio/"
 
 // TODO: this does not work: audio must be applied to an object
-function setAudio(resourceName, startTime, autoplay, loop, volume){
+// entitySource: null or ObjectID (the object which plays the sound)
+function addAudio(resourceName, loop, volume, entitySourceId){
     console.log("Setting Audio into scene")
     
     // Create the Audio source path

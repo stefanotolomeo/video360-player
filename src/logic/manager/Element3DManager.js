@@ -14,6 +14,7 @@ function deleteElement3D(id){
 }
 
 
+// Segnare il type possibile: 
 function setElement3D(type, color, position, startTime, duration){
     // E.g.:
     // <a-box color="red" position="0 0 -5" animation="property:rotation; to:0 360 0; loop:true; delay:1000; dur:2000"></a-box>
@@ -25,3 +26,5 @@ function setElement3D(type, color, position, startTime, duration){
     console.log(`Appending 3D ELEMENT: ${item}`)
     $("#scene").append(item)
 }
+
+// TODO: aggiungere input modello

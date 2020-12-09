@@ -2,7 +2,14 @@
 
 const MSG_DESTINATION = "CP";
 
-sm.init(onauthenticate, ondisconnect); //Callback for authentication and for disconnection. No need to try to reconnect.
+const urlParams = new URLSearchParams(window.location.search);
+const currentMODE = urlParams.get('m')
+
+// TODO: eseguire a document ready
+// 
+const sm = new SocketManager()
+// TODO: Set the mode here
+sm.init(onauthenticate, ondisconnect, currentMODE); //Callback for authentication and for disconnection. No need to try to reconnect.
 
 sm.listen(onmessage); //Callback for message reception
 
@@ -18,9 +25,9 @@ function ondisconnect(reason) {
 function onmessage(msg) {
     console.log("Message received", msg); //a message was received, you can access action, destination, sender and payload properties
     
-    let result = executeMessage(msg)
+    let payload = executeMessage(msg)
 
-    console.log(`Sending result: ${result}`)
+    console.log(`Sending result: ${payload}`)
     
-    sm.send(msg.action, MSG_DESTINATION, result);
+    sm.send(msg.action, MSG_DESTINATION, payload);
 }

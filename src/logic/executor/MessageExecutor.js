@@ -1,24 +1,119 @@
 
 const ActionEnum = {
-    "getView": 1, 
-    "setView": 2, 
-    "getTime": 3, 
-    "setTime": 4,
-    "getDuration": 5,
-    "playVideo": 6,
-    "pauseVideo": 7,
-    "addText": 8,
-    "editText": 9,
-    "deleteText": 10,
-    "addImage": 11,
-    "editImage": 12,
-    "deleteImage": 13
-    
+    "connect": 1,
+    "load": 2,
+    "getView": 3, 
+    "setView": 4, 
+    "getTime": 5, 
+    "setTime": 6,
+    "getDuration": 7,
+    "playVideo": 8,
+    "pauseVideo": 9,
+    "addText": 10,
+    "editText": 11,
+    "deleteText": 12,
+    "addImage": 13,
+    "editImage": 14,
+    "deleteImage": 15
 }
-                  
+
+const PLAYER_VIDEO_360 = "video_360"
+const PLAYER_3D_MODEL = "3D_model"
+
+/* E.G. 
+    REQ        {
+                action: "connect",
+                destination: "VR",
+                sender: *
+            }
+    RESP    {
+                action: "connect",
+                destination: "CP",
+                sender: *,
+                payload: true
+            }
+            */
+
+/* E.G. 
+      REQ   {
+                action: "load",
+                destination: "VR",
+                sender: *,
+                payload: {
+                    player: "video360 o 3D-model",
+                    url: "path to file",
+                    options: {
+                        volume: 1,
+                        loop: true
+                    }
+                }
+            }
+    RESP:   {
+                action: "load",
+                destination: "CP",
+                sender: *,
+                payload: true
+            }
+            */
+               
+
 // Parse a message in JSON format
-function executeMessage(msg){
+async function executeMessage(msg){
     switch(msg.action){
+        // **** CONNECT **** //
+        case ActionEnum.connect:
+            /* E.G. 
+            {
+                action: "connect",
+                destination: "VR",
+                sender: *
+            }
+            */
+            
+            console.log(`Returning Connect=TRUE`)
+            return true
+        
+        // **** LOAD **** //
+        case ActionEnum.load:
+            /* E.G. 
+            {
+                action: "load",
+                destination: "VR",
+                sender: *,
+                payload: {
+                    player: "video360 o 3D-model",
+                    url: "path to file",
+                    options: {
+                        loop: true,
+                        volume: 1,
+                        position: {
+                            x: 1,
+                            y: 1,
+                            z: 1
+                        },
+                        rotation: {
+                            x: 0,
+                            y: 0,
+                            z: 0
+                        }
+                    }
+                }
+            }
+            */
+            
+            let p = msg.payload
+            if(p.player == PLAYER_VIDEO_360){
+              
+                let opt = p.options
+                // TODO: run async operations
+                let res = await setVideoAsync(p.url, opt.loop, opt.volume, opt.position, opt.rotation)
+                return res
+            } 
+            
+            console.log(`Unsupported Player for ${p.player}`)
+            return false
+        
+            
         // **** VIEWS **** //
         case ActionEnum.getView:
             /* E.G. 

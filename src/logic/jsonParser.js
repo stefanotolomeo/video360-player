@@ -16,7 +16,7 @@ function readJson(document){
         
         // (1) Get from JSON: Video source and rotation
         var videoRotation = `${obj.init_settings.rotation.x} ${obj.init_settings.rotation.y} ${obj.init_settings.rotation.z}`
-        setVideo(obj.src, true, false, 1, null, videoRotation)        
+        setVideo(obj.src, true, 1, undefined, videoRotation)        
         
         // (2) Attach Elements (Loop + call a function)
         for(let el of obj.elements){
@@ -55,8 +55,18 @@ $(document).ready(() => {
         var intersection = cursor.components.raycaster.getIntersection(cursor.components.intersectedEl);
         var intersectionPosition = intersection.point;*/
         console.log(evt.originalEvent)
-        // console.log(`Intersection Point is: ${JSON.stringify(evt.detail.intersection)} `)
+       /*console.log(`Intersection Point is: ${JSON.stringify(evt.detail.intersection)} `)
     
+        console.log($("#cursor"))
+        
+        
+        var cursor = $("#cursor")
+        var elToWatch = $("#scene")
+        var intersection = cursor.components.raycaster.getIntersection(elToWatch);
+        var intersectionPosition = intersection.point;
+        
+        console.log("Intersection is: ", intersection)*/
+        
         /*console.log(`Inner-Window Height: ${window.innerHeight} Width: ${window.innerWidth}`)
         let x = evt.originalEvent.clientX
         let y = evt.originalEvent.clientY
