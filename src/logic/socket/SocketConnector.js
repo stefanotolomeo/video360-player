@@ -1,17 +1,20 @@
 // TODO: understand how to implement
 
 const MSG_DESTINATION = "CP";
+const MODE_VR = "VR";
 
-const urlParams = new URLSearchParams(window.location.search);
-const currentMODE = urlParams.get('m')
+const urlParams = new URLSearchParams(window.location.search)
+const currentMODE = urlParams.get('m') || MODE_VR;
 
-// TODO: eseguire a document ready
-// 
-const sm = new SocketManager()
-// TODO: Set the mode here
-sm.init(onauthenticate, ondisconnect, currentMODE); //Callback for authentication and for disconnection. No need to try to reconnect.
+(function () { //eseguire a document ready
+    const sm = new SocketManager()
+    // TODO: Set the mode here
+    sm.init(onauthenticate, ondisconnect, currentMODE); //Callback for authentication and for disconnection. No need to try to reconnect.
 
-sm.listen(onmessage); //Callback for message reception
+    sm.listen(onmessage); //Callback for message reception
+
+})();
+
 
 function onauthenticate() {
     console.log("Authenticated"); //the client was authenticated by the server. The client can now send messages.
@@ -24,10 +27,10 @@ function ondisconnect(reason) {
 
 function onmessage(msg) {
     console.log("Message received", msg); //a message was received, you can access action, destination, sender and payload properties
-    
+
     let payload = executeMessage(msg)
 
     console.log(`Sending result: ${payload}`)
-    
+
     sm.send(msg.action, MSG_DESTINATION, payload);
 }

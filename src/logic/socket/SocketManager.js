@@ -16,7 +16,9 @@ function SocketManager() {
             withCredentials: true,
             extraHeaders: {
                 "abilia-socket-header": "cors" //define a header to be able to do CORS requests
-            }
+            },
+            autoConnect: true,
+            reconnection: true
         });
         modality = mode;
 
